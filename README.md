@@ -1,4 +1,4 @@
-# CORBA Calculator in Java
+# CORBA Calculator in Java 📟
 
 This project is a simple calculator using CORBA in Java. It has several new features added:
 

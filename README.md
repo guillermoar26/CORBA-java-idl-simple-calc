@@ -1,13 +1,20 @@
-CORBA-java-idl-simple-calc
-==========================
+# CORBA Calculator in Java
 
-Simple calculator using CORBA in Java
+This project is a simple calculator using CORBA in Java. It has several new features added:
 
-New features added:
-- pwr: raises a number to another one
-- sqr: makes the square root of a number
-- cqr: makes the cubic root of a number
-- dtb: converts a decimal value to binary
-- dto: converts a decimal value to octal
-- dth: converts a decimal value to hex
-- mod: returns the modulus between two params
+| Operation | Description |
+|-----------|-------------|
+| pwr       | Raises a number to another one |
+| sqr       | Makes the square root of a number |
+| cqr       | Makes the cubic root of a number |
+| dtb       | Converts a decimal value to binary |
+| dto       | Converts a decimal value to octal |
+| dth       | Converts a decimal value to hex |
+| mod       | Returns the modulus between two params |
+
+## Installation
+
+Before running the project, make sure you have the following dependencies installed:
+
+- Java Development Kit (JDK)
+- Common Object Request Broker Architecture (CORBA)

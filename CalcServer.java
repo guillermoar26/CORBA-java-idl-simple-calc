@@ -1,6 +1,7 @@
 
 import CalcApp.*;
 import CalcApp.CalcPackage.DivisionByZero;
+import CalcApp.CalcPackage.NegativeNumber;
 
 import org.omg.CosNaming.*;
 import org.omg.CosNaming.NamingContextPackage.*;
@@ -10,6 +11,12 @@ import org.omg.PortableServer.*;
 import java.util.Properties;
 
 class CalcImpl extends CalcPOA {
+    
+    private ORB orb;
+
+    public void setORB(ORB orb_val) {
+        orb = orb_val;
+    }
 
     @Override
     public float sum(float a, float b) {
@@ -34,11 +41,54 @@ class CalcImpl extends CalcPOA {
     public float sub(float a, float b) {
         return a - b;
     }
-    private ORB orb;
 
-    public void setORB(ORB orb_val) {
-        orb = orb_val;
+    @Override
+    public double pwr(double a, double b) {
+        // TODO Auto-generated method stub
+        return (double)Math.pow(a,b);
     }
+
+    @Override
+    public double sqr(double a) throws NegativeNumber {
+        if (a < 0.0) {
+            throw new CalcApp.CalcPackage.NegativeNumber();
+        } else {
+            return Math.sqrt(a);
+        }
+    }
+
+    @Override
+    public double cqr(double b) throws NegativeNumber {
+        if (b < 0.0) {
+            throw new CalcApp.CalcPackage.NegativeNumber();
+        } else {
+            return Math.cbrt(b);
+        }
+    }
+
+    @Override
+    public String dtb(int a) {
+        String bin = Long.toBinaryString(a);
+        return bin;
+    }
+
+    @Override
+    public String dto(int a) {
+        String oct = Long.toOctalString(a);
+        return oct;
+    }
+
+    @Override
+    public String dth(int a) {
+        String hex = Long.toHexString(a);
+        return hex;
+    }
+
+    @Override
+    public int mod(int a, int b) {
+        return a % b;
+    }
+
 }
 
 public class CalcServer {

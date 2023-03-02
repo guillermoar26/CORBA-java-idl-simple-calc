@@ -5,6 +5,7 @@ import java.io.InputStreamReader;
 
 import CalcApp.*;
 import CalcApp.CalcPackage.DivisionByZero;
+import CalcApp.CalcPackage.NegativeNumber;
 
 import org.omg.CosNaming.*;
 import org.omg.CosNaming.NamingContextPackage.*;
@@ -36,17 +37,24 @@ public class CalcClient {
 
 
             while (true) {
-                out.println("1. Sum");
-                out.println("2. Sub");
-                out.println("3. Mul");
-                out.println("4. Div");
-                out.println("5. exit");
+                out.println("1.  Sum");
+                out.println("2.  Sub");
+                out.println("3.  Mul");
+                out.println("4.  Div");
+                out.println("5.  Pwr");
+                out.println("6.  Sqr");
+                out.println("7.  Cqr");
+                out.println("8.  Dtb");
+                out.println("9.  Dto");
+                out.println("10. Dth");
+                out.println("11. Mod");
+                out.println("12. exit");
                 out.println("--");
                 out.println("choice: ");
 
                 try {
                     String opt = br.readLine();
-                    if (opt.equals("5")) {
+                    if (opt.equals("12")) {
                         break;
                     } else if (opt.equals("1")) {
                         out.println("a+b= " + calcImpl.sum(getFloat("a"), getFloat("b")));
@@ -60,10 +68,32 @@ public class CalcClient {
                         } catch (DivisionByZero de) {
                             out.println("Division by zero!!!");
                         }
+                    } else if (opt.equals("5")) {
+                        out.println("a^b= " + calcImpl.pwr(getFloat("a"), getFloat("b")));
+                    } else if (opt.equals("6")) {
+                        try {
+                            out.println("a sqr= " + calcImpl.sqr(getFloat("a")));
+                        } catch (NegativeNumber n) {
+                            out.println("Negative number!!!");
+                        }
+                    } else if (opt.equals("7")) {
+                        try {
+                            out.println("a cqr= " + calcImpl.cqr(getFloat("a")));
+                        } catch (NegativeNumber n) {
+                            out.println("Negative number!!!");
+                        }
+                    } else if (opt.equals("8")) {
+                        out.println("a to binary= " + calcImpl.dtb((int)getFloat("a")));
+                    } else if (opt.equals("9")) {
+                        out.println("a to octal= " + calcImpl.dto((int)getFloat("a")));
+                    } else if (opt.equals("10")) {
+                        out.println("a to hex= " + calcImpl.dth((int)getFloat("a")));
+                    } else if (opt.equals("11")) {
+                        out.println("a mod b= " + calcImpl.mod((int)getFloat("a"), (int)getFloat("b")));
                     }
                 } catch (Exception e) {
                     out.println("===");
-                    out.println("Error with numbers");
+                    out.println("Error with numbers" + e.getMessage());
                     out.println("===");
                 }
                 out.println("");

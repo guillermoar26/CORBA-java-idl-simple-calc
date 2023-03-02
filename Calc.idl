@@ -3,10 +3,18 @@ module CalcApp
 	interface Calc
 	{
 		exception DivisionByZero {};
+		exception NegativeNumber {};
 
 		float sum(in float a, in float b);
 		float div(in float a, in float b) raises (DivisionByZero);
 		float mul(in float a, in float b);
 		float sub(in float a, in float b);
+		double pwr(in double a, in double b);
+		double sqr(in double a) raises (NegativeNumber);
+		double cqr(in double b) raises (NegativeNumber);
+		string dtb(in long a);
+		string dto(in long a);
+		string dth(in long a);
+		long mod(in long a, in long b);
 	};
 };
